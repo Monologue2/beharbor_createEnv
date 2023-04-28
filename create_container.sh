@@ -2,6 +2,7 @@
 
 echo "## Create Beharbor-Server Container"
 
+echo "Type a start port number..."
 read i
 
 while read line || [ -n "$line" ] ; do

@@ -10,6 +10,7 @@ while read line || [ -n "$line" ] ; do
     ((k=$i+1))
     ((j=$i+49))
     docker run -it -d --env USERNAME=$line -h=$line --name $line -p $i:22 -p $k-$j:$k-$j beharbor_ubuntu:1.0
+    docker exec $line "/root/create_user.sh $line"
     ufw allow $i:$j/tcp
     ufw allow $i:$j/udp
     ((i+=50))

@@ -7,7 +7,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     nano \
+    sudo \
     && rm -rf /var/lib/apt/lists/*
+
 # Install Node.js using NodeSource
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
 RUN apt-get install -y nodejs
@@ -23,3 +25,4 @@ RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
 CMD ["/usr/sbin/sshd", "-D"]
+ENTRYPOINT ["/usr/sbin/sshd", "-D"]
